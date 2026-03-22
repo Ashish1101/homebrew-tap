@@ -9,6 +9,11 @@ cask "macsweep" do
 
   app "macsweep.app"
 
+  preflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{staged_path}/macsweep.app"]
+  end
+
   zap trash: [
     "~/.config/macsweep",
   ]
